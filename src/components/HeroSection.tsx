@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroVideo from "@/assets/Video Project Final Reverse.mp4";
+import heroVideo from "@/assets/hero.webm";
 import logo from "@/assets/Imagem9-edit-removebg-preview.png";
 
 const ShimmerParticle = ({ delay, x, y }: { delay: number; x: number; y: number }) => (
@@ -74,8 +74,7 @@ const HeroSection = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 1 }}
           >
-            Gastronomia à beira do mangue
-            {/* Trocar a cor para vermelho guara ou verde natureza. Dentro da nossa paleta de cores. */}
+            Gastronomia à beira do mar
           </motion.p>
 
           <motion.div
@@ -91,7 +90,7 @@ const HeroSection = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 1 }}
           >
-            Onde a natureza encontra a sofisticação
+            Sabor, natureza e boas memórias
           </motion.p>
         </motion.div>
 
