@@ -30,7 +30,7 @@ const menuItems: Record<string, Array<{ name: string; desc: string; price: strin
   Drinks: [
     { name: "Caipirinha", desc: "Caipirinha clássica de limão", price: "R$ 25,00", img: caipiveja },
     { name: "Lagoa Azul", desc: "Coquetel vibrante com curaçau blue", price: "R$ 20,00", img: lagoaAzul },
-    { name: "Cerveja Heineken", desc: "Cerveja premium gelada", price: "R$ 20,00", img: cervejaHeineken },
+    { name: "Cerveja Heineken", desc: "Cerveja gelada", price: "R$ 20,00", img: cervejaHeineken },
     { name: "Caipi Coco", desc: "Caipirinha cremosa de coco", price: "R$ 20,00", img: caipiCoco },
   ],
   "Frutos do Mar": [
