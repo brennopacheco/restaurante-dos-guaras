@@ -160,7 +160,7 @@ const ContactSection = () => {
                 Restaurante dos <span className="italic text-wine">Guarás</span>
               </p>
               <p className="font-body text-xs text-dark/50 tracking-wider uppercase mt-1">
-                Restaurante & Mangue
+                {/* adicionar uma frase aqui */}
               </p>
             </div>
           </div>
