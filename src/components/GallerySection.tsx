@@ -130,25 +130,24 @@ const GallerySection = () => {
   }, [selected]);
 
   return (
-    <section id="galeria" className="bg-background pt-0 md:pt-16">
-      {/* TITLE SECTION MOVED INSIDE PINNED CONTAINER */}
-      <motion.div
-        className="text-center relative z-30 mb-0 md:mb-8 px-6 mt-5 md:mt-0"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
-        <p className="font-body text-xs tracking-[0.3em] uppercase text-wine mb-4">
-          Nossos Espaços
-        </p>
-        <h2 className="font-display text-5xl md:text-6xl font-light text-foreground mb-4">
-          <span className="italic text-primary">Galeria</span>
-        </h2>
-        <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
-      </motion.div>
-
+    <section id="galeria" className="bg-background">
       {/* GALLERY PINNED SECTION */}
-      <div ref={containerRef} className="relative overflow-hidden h-[100vh] flex flex-col items-center justify-center pt-8 md:pt-[8vh]">
+      <div ref={containerRef} className="relative h-[100dvh] flex flex-col items-center justify-center">
+        {/* TITLE INSIDE PINNED CONTAINER */}
+        <motion.div
+          className="text-center relative z-30 mb-4 md:mb-8 px-6"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <p className="font-body text-xs tracking-[0.3em] uppercase text-wine mb-4">
+            Nossos Espaços
+          </p>
+          <h2 className="font-display text-5xl md:text-6xl font-light text-foreground mb-4">
+            <span className="italic text-primary">Galeria</span>
+          </h2>
+          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
+        </motion.div>
         {/* Guará */}
         <motion.img
           src={guara3}
@@ -162,7 +161,7 @@ const GallerySection = () => {
           {/* 6x6 Staggered Masonry Grid Container that handles the flying zoom */}
           <div
             ref={gridRef}
-            className="grid grid-cols-6 grid-rows-6 gap-2 md:gap-4 w-[95vw] md:w-[85vw] max-w-[1200px] aspect-[4/5] md:aspect-video mx-auto origin-center relative z-20 will-change-transform"
+            className="grid grid-cols-6 grid-rows-6 gap-2 md:gap-4 w-[95vw] md:w-[85vw] max-w-[1200px] aspect-[3/4] md:aspect-video mx-auto origin-center relative z-20 will-change-transform"
           >
             {images.map((img, i) => {
               return (
@@ -174,7 +173,7 @@ const GallerySection = () => {
                   }}
                   data-move-x={img.moveX}
                   data-move-y={img.moveY}
-                  className={`relative cursor-pointer group will-change-transform overflow-hidden rounded-md md:rounded-xl ${img.isCenter ? "z-30 shadow-2xl shadow-black/50" : "z-10"
+                  className={`relative cursor-pointer group overflow-hidden rounded-md md:rounded-xl ${img.isCenter ? "z-30 shadow-2xl shadow-black/50" : "z-10"
                     } ${img.className}`}
                   onClick={() => setSelected(i)}
                 >
@@ -182,7 +181,7 @@ const GallerySection = () => {
                     ref={img.isCenter ? centerImgRef : null}
                     src={img.src}
                     alt={img.title}
-                    className={`w-full h-full object-cover will-change-transform transition-transform duration-700 rounded-md md:rounded-xl group-hover:scale-110 ${img.isCenter ? "origin-center object-center" : ""
+                    className={`w-full h-full object-cover transition-transform duration-700 rounded-md md:rounded-xl group-hover:scale-110 ${img.isCenter ? "origin-center object-center" : ""
                       }`}
                     loading="lazy"
                   />
