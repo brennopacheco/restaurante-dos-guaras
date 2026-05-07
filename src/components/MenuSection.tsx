@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import guara2 from "@/assets/guara-3d-2.png";
+import WaveDivider from "@/components/WaveDivider";
 import caranguejoTocToc from "@/assets/caranguejo_toc_toc.png";
 import iscaDePeixe from "@/assets/isca_de_peixe.png";
 import macaxeiraFrita from "@/assets/macaxeira_frita.png";
@@ -220,6 +221,8 @@ const MenuSection = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <WaveDivider fill="hsl(38, 25%, 96%)" className="z-10" />
     </section>
   );
 };

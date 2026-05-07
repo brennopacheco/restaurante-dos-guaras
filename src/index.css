@@ -4,17 +4,17 @@
 
 @layer base {
   :root {
-    --background: 0 0% 95%;
-    --foreground: 0 0% 10%;
+    --background: 38 25% 96%;
+    --foreground: 20 15% 12%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 10%;
+    --card: 38 20% 98%;
+    --card-foreground: 20 15% 12%;
 
-    --popover: 0 0% 98%;
-    --popover-foreground: 0 0% 10%;
+    --popover: 38 20% 98%;
+    --popover-foreground: 20 15% 12%;
 
-    --primary: 355 46% 47%;
-    --primary-foreground: 0 0% 95%;
+    --primary: 20 65% 50%;
+    --primary-foreground: 0 0% 98%;
 
     --secondary: 98 26% 33%;
     --secondary-foreground: 0 0% 95%;
@@ -36,10 +36,10 @@
 
     /* Custom tokens */
     --forest: 98 26% 33%;
-    --wine: 355 46% 47%;
+    --wine: 20 65% 50%;
     --gold: 34 73% 56%;
     --cream: 40 25% 93%;
-    --dark: 0 0% 10%;
+    --dark: 20 15% 12%;
 
     --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'Raleway', system-ui, sans-serif;
@@ -65,12 +65,12 @@
     --card-foreground: 0 0% 95%;
     --popover: 0 0% 8%;
     --popover-foreground: 0 0% 95%;
-    --primary: 355 46% 47%;
-    --primary-foreground: 0 0% 95%;
+    --primary: 20 65% 50%;
+    --primary-foreground: 0 0% 98%;
     --secondary: 98 26% 33%;
     --secondary-foreground: 0 0% 95%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 20 10% 15%;
+    --muted-foreground: 38 10% 65%;
     --accent: 34 73% 56%;
     --accent-foreground: 0 0% 10%;
     --destructive: 0 62.8% 30.6%;

@@ -47,7 +47,7 @@ const ContactSection = () => {
                 </p>
               </a>
 
-              {/* Box 2: Reservas */}
+              {/* Box 2: Telefone */}
               <a
                 href="https://wa.me/5598984117223"
                 target="_blank"
@@ -57,7 +57,7 @@ const ContactSection = () => {
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#FDFBF7] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                   <Phone className="text-forest" size={20} />
                 </div>
-                <h3 className="font-display text-base sm:text-lg text-dark mb-1 sm:mb-2 group-hover:text-forest transition-colors">Reservas</h3>
+                <h3 className="font-display text-base sm:text-lg text-dark mb-1 sm:mb-2 group-hover:text-forest transition-colors">Telefone</h3>
                 <p className="font-body text-dark/60 text-[11px] sm:text-sm group-hover:text-dark/80 transition-colors">
                   (98) 98411-7223
                 </p>
@@ -72,8 +72,8 @@ const ContactSection = () => {
                 </div>
                 <h3 className="font-display text-base sm:text-lg text-dark mb-1 sm:mb-2 group-hover:text-forest transition-colors">Horários</h3>
                 <p className="font-body text-dark/60 text-[11px] sm:text-sm leading-relaxed">
-                  Terça a Domingo<br />
-                  11h30 às 23h00
+                  Ter a Dom · 08h às 18h<br />
+                  <span className="text-dark/40">Fechado às Segundas</span>
                 </p>
               </div>
 

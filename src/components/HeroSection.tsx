@@ -1,18 +1,19 @@
 import { motion } from "framer-motion";
 import heroVideo from "@/assets/hero.webm";
 import logo from "@/assets/Imagem9-edit-removebg-preview.png";
+import WaveDivider from "@/components/WaveDivider";
 
 const ShimmerParticle = ({ delay, x, y }: { delay: number; x: number; y: number }) => (
   <motion.div
-    className="absolute rounded-full bg-gold/40"
-    style={{ left: `${x}%`, top: `${y}%`, width: 4, height: 4 }}
+    className="absolute rounded-full bg-amber-300/50"
+    style={{ left: `${x}%`, top: `${y}%`, width: 5, height: 5 }}
     animate={{
-      opacity: [0, 0.8, 0],
-      scale: [0.5, 1.5, 0.5],
-      y: [0, -30, -60],
+      opacity: [0, 0.6, 0],
+      scale: [0.4, 1.8, 0.4],
+      y: [0, -45, -90],
     }}
     transition={{
-      duration: 4,
+      duration: 7,
       delay,
       repeat: Infinity,
       ease: "easeInOut",
@@ -21,11 +22,11 @@ const ShimmerParticle = ({ delay, x, y }: { delay: number; x: number; y: number 
 );
 
 const HeroSection = () => {
-  const particles = Array.from({ length: 100 }, (_, i) => ({
+  const particles = Array.from({ length: 25 }, (_, i) => ({
     id: i,
-    delay: Math.random() * 4,
+    delay: Math.random() * 5,
     x: Math.random() * 100,
-    y: 30 + Math.random() * 60,
+    y: 20 + Math.random() * 55,
   }));
 
   return (
@@ -40,9 +41,9 @@ const HeroSection = () => {
           loop
           playsInline
         />
-        {/* Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-dark/30 via-dark/30 to-dark/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-dark/30 to-transparent" />
+        {/* Warm daylight overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-700/35 via-transparent to-stone-900/65" />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/30 via-transparent to-transparent" />
       </div>
 
       {/* Shimmer particles */}
@@ -92,17 +93,28 @@ const HeroSection = () => {
           >
             Sabor, natureza e boas memórias
           </motion.p>
+
+          <motion.p
+            className="font-body text-cream/50 text-xs md:text-sm tracking-[0.25em] uppercase mt-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.6, duration: 1 }}
+          >
+            Ter – Dom &nbsp;·&nbsp; 08h às 18h
+          </motion.p>
         </motion.div>
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
           <div className="w-[1px] h-20 bg-gradient-to-b from-gold to-transparent" />
         </motion.div>
       </div>
+
+      <WaveDivider fill="hsl(38, 25%, 96%)" className="z-20" />
     </section>
   );
 };

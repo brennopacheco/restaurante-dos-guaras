@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import WaveDivider from "@/components/WaveDivider";
 import heroImg from "@/assets/guarasteto.jpg";
 import aboutImg from "@/assets/vistasol.jpg";
 import gallery1 from "@/assets/drinks.png";
@@ -10,7 +11,7 @@ import gallery3 from "@/assets/faixada.jpeg";
 import dish1 from "@/assets/vertical.png";
 import guara3 from "@/assets/guara-3d-3.png";
 import vista_salao from "@/assets/IMG_2822.jpg";
-import dish3 from "@/assets/vista_area_noturna.jpeg"; // Using an existing dessert image as placeholder
+import dish3 from "@/assets/vista_area_tarde.jpeg";
 import dish4 from "@/assets/pratos.png"; // Using an existing drink image as placeholder
 
 import gsap from "gsap";
@@ -34,7 +35,7 @@ const images = [
   // 7: Bottom Center [2x2]
   { src: dish4, title: "Nossos Pratos", isCenter: false, className: "col-span-2 row-span-2 col-start-3 row-start-5", moveX: "0", moveY: "30vh" },
   // 8: Bottom Left gap [2x1]
-  { src: dish3, title: "Clima Noturno", isCenter: false, className: "col-span-2 row-span-1 col-start-1 row-start-6", moveX: "-30vw", moveY: "20vh" },
+  { src: dish3, title: "Vista da Tarde", isCenter: false, className: "col-span-2 row-span-1 col-start-1 row-start-6", moveX: "-30vw", moveY: "20vh" },
 ];
 
 gsap.registerPlugin(ScrollTrigger);
@@ -261,6 +262,8 @@ const GallerySection = () => {
           document.body
         )}
       </div>
+
+      <WaveDivider fill="#FDFBF7" flip className="z-10" />
     </section>
   );
 };

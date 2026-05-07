@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import aboutImg from "@/assets/IMG_2808.jpg";
 import guara1 from "@/assets/guara-3d-1.png";
 import guara2 from "@/assets/guara-3d-2.png";
+import WaveDivider from "@/components/WaveDivider";
 
 const AboutSection = () => {
   return (
@@ -48,18 +49,18 @@ const AboutSection = () => {
             </p>
             <div className="flex items-center justify-between sm:justify-start gap-2 sm:gap-6 w-full mt-4">
               <div className="text-center flex-1 sm:flex-none">
-                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-forest">Novo</p>
-                <p className="font-body text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">Destino</p>
+                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-forest">16</p>
+                <p className="font-body text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">Pratos no Cardápio</p>
               </div>
               <div className="w-[1px] h-8 sm:h-12 bg-border shrink-0" />
               <div className="text-center flex-1 sm:flex-none">
-                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-forest">Comidas</p>
-                <p className="font-body text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">Típicas</p>
+                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-forest">Frutos</p>
+                <p className="font-body text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">do Mar</p>
               </div>
               <div className="w-[1px] h-8 sm:h-12 bg-border shrink-0" />
               <div className="text-center flex-1 sm:flex-none">
-                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-forest">Paz</p>
-                <p className="font-body text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">& Natureza</p>
+                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-forest">Mangue</p>
+                <p className="font-body text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">& Mar</p>
               </div>
             </div>
           </motion.div>
@@ -86,6 +87,8 @@ const AboutSection = () => {
           </motion.div>
         </div>
       </div>
+
+      <WaveDivider fill="hsl(40, 25%, 93%)" flip className="z-10" />
     </section>
   );
 };
