@@ -41,7 +41,7 @@ const AboutSection = () => {
             </h2>
             <div className="w-16 h-[1px] bg-wine mb-8" />
             <p className="font-body text-muted-foreground leading-relaxed text-lg mb-6">
-              Somos o primeiro restaurante localizado às margens da Baía do Arraial, no lado leste da Ilha do Maranhão — um ecossistema ainda pouco explorado de São Luís, entre manguezais preservados e as águas serenas da baía.
+              Somos o primeiro restaurante localizado às margens da Baía do Arraial, no lado leste da Ilha de São Luís — um ecossistema ainda pouco explorado, entre manguezais preservados e as águas serenas da baía.
             </p>
             <p className="font-body text-muted-foreground leading-relaxed text-lg mb-8">
               Aqui, cada prato carrega a alma da cozinha maranhense: frutos do mar frescos, temperos regionais e uma vista que convida à contemplação. Venha descobrir um novo destino gastronômico em São Luís.
