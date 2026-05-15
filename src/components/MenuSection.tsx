@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import guara2 from "@/assets/guara-3d-2.png";
 import caranguejoTocToc from "@/assets/caranguejo_toc_toc.png";
 import iscaDePeixe from "@/assets/isca_de_peixe.png";
 import macaxeiraFrita from "@/assets/macaxeira_frita.png";
 import camaraoEmpanado from "@/assets/camarao_empanado.png";
 import caipiveja from "@/assets/caipiveja.png";
-import lagoaAzul from "@/assets/lagoa_azul.png";
 import cervejaHeineken from "@/assets/cerveja_heineken.png";
 import caipiCoco from "@/assets/caipi_coco.png";
 import caranguejada from "@/assets/caranguejada.png";
@@ -14,36 +14,31 @@ import peixadaEscabeche from "@/assets/peixada_escabeche.png";
 import pescadinhaFritas from "@/assets/pescadinha_fritas.png";
 import camaraoAlhoOleo from "@/assets/camarao_alho_oleo.png";
 import pudimDeLeite from "@/assets/pudim_de_leite.png";
-import cocadaDeForno from "@/assets/cocada_de_forno.png";
 import mousseCupuacu from "@/assets/mousse_cupuacu.png";
-import sorveteRegional from "@/assets/sorvete_regional.png";
 
 const categories = ["Entradas", "Drinks", "Frutos do Mar", "Sobremesas"];
 
 const menuItems: Record<string, Array<{ name: string; desc: string; price: string; img: string }>> = {
   Entradas: [
-    { name: "Caranguejo Toc Toc", desc: "Farofa e vinagrete (4 und)", price: "R$ 79,00", img: caranguejoTocToc },
-    { name: "Isca de Peixe", desc: "Farofa e vinagrete", price: "R$ 120,00", img: iscaDePeixe },
-    { name: "Macaxeira Frita", desc: "Molho rosê", price: "R$ 35,00", img: macaxeiraFrita },
-    { name: "Camarão Empanado", desc: "Farofa e vinagrete", price: "R$ 140,00", img: camaraoEmpanado },
+    { name: "Caranguejo Toc Toc", desc: "5 und · farofa e vinagrete", price: "R$ 80,00", img: caranguejoTocToc },
+    { name: "Macaxeira Frita", desc: "400g · molho rosê", price: "R$ 35,00", img: macaxeiraFrita },
+    { name: "Camarão Empanado", desc: "300g · farofa e vinagrete", price: "R$ 140,00", img: camaraoEmpanado },
+    { name: "Isca de Peixe", desc: "400g · farofa e vinagrete", price: "R$ 120,00", img: iscaDePeixe },
   ],
   Drinks: [
-    { name: "Caipirinha", desc: "Caipirinha clássica de limão", price: "R$ 25,00", img: caipiveja },
-    { name: "Lagoa Azul", desc: "Coquetel vibrante com curaçau blue", price: "R$ 20,00", img: lagoaAzul },
-    { name: "Cerveja Heineken", desc: "Cerveja gelada", price: "R$ 20,00", img: cervejaHeineken },
-    { name: "Caipi Coco", desc: "Caipirinha cremosa de coco", price: "R$ 20,00", img: caipiCoco },
+    { name: "Caipirinha Tradicional", desc: "", price: "R$ 15,00", img: caipiveja },
+    { name: "Caipifruta", desc: "vodka, açúcar, gelo · morango, maracujá, abacaxi, cupuaçu", price: "R$ 22,00", img: caipiCoco },
+    { name: "Heineken", desc: "", price: "R$ 20,00", img: cervejaHeineken },
   ],
   "Frutos do Mar": [
-    { name: "Caranguejada", desc: "Arroz, farofa, pirão e vinagrete", price: "R$ 125,00", img: caranguejada },
-    { name: "Peixada Escabeche", desc: "Ao molho de camarão. Arroz, farofa, pirão e vinagrete", price: "R$ 170,00", img: peixadaEscabeche },
-    { name: "Pescadinha Fritas", desc: "Arroz, farofa, pirão e vinagrete", price: "R$ 110,00", img: pescadinhaFritas },
-    { name: "Camarão Alho e Óleo", desc: "Farofa e vinagrete", price: "R$ 160,00", img: camaraoAlhoOleo },
+    { name: "Caranguejada", desc: "6 und · leite de coco e arroz de toucinho · serve 2 pessoas", price: "R$ 125,00", img: caranguejada },
+    { name: "Peixe Pedra Escabeche", desc: "800g · serve 2 pessoas", price: "R$ 150,00", img: peixadaEscabeche },
+    { name: "Pescadinha Frita", desc: "800g · serve 2 pessoas", price: "R$ 110,00", img: pescadinhaFritas },
+    { name: "Camarão Frito com Casca Alho e Óleo", desc: "500g · ovo cozido e batata · serve 3 pessoas", price: "R$ 160,00", img: camaraoAlhoOleo },
   ],
   Sobremesas: [
-    { name: "Pudim de Leite", desc: "Clássico pudim de leite condensado com calda de caramelo", price: "R$ 25,00", img: pudimDeLeite },
-    { name: "Cocada de Forno", desc: "Cocada quente servida com bola de sorvete de creme", price: "R$ 32,00", img: cocadaDeForno },
-    { name: "Mousse de Cupuaçu", desc: "Mousse cremosa da fruta típica da região norte", price: "R$ 28,00", img: mousseCupuacu },
-    { name: "Sorvete Regional", desc: "Duas bolas de sorvete (sabores: taperebá, bacuri ou açaí)", price: "R$ 22,00", img: sorveteRegional },
+    { name: "Pudim", desc: "", price: "R$ 13,00", img: pudimDeLeite },
+    { name: "Mousse", desc: "maracujá, cupuaçu ou bacuri", price: "R$ 13,00", img: mousseCupuacu },
   ],
 };
 
@@ -94,7 +89,16 @@ const MenuSection = () => {
           <h2 className="font-display text-5xl md:text-6xl font-light text-wine mb-2">
             O <span className="italic text-dark">Cardápio</span>
           </h2>
-          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-wine to-transparent mx-auto" />
+          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-wine to-transparent mx-auto mb-8" />
+          <a
+            href="/cardapio.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-body text-xs md:text-sm tracking-[0.18em] uppercase px-6 py-3 rounded-sm border border-wine bg-wine text-cream hover:bg-transparent hover:text-wine transition-all duration-300"
+          >
+            Ver cardápio completo
+            <ExternalLink className="h-4 w-4" aria-hidden="true" />
+          </a>
         </motion.div>
 
         {/* Category tabs */}
@@ -141,13 +145,15 @@ const MenuSection = () => {
                     />
                   </div>
                   <div className="flex-1">
-                    <div className="flex justify-between items-start mb-2">
+                    <div className="flex justify-between items-start gap-4 mb-2">
                       <h3 className="font-display text-xl text-dark group-hover:text-wine transition-colors">
                         {item.name}
                       </h3>
-                      <span className="font-display text-lg font-semibold text-wine/90">{item.price}</span>
+                      <span className="font-display text-lg font-semibold text-wine/90 shrink-0 whitespace-nowrap">{item.price}</span>
                     </div>
-                    <p className="font-body text-sm text-dark/60 leading-relaxed line-clamp-2">{item.desc}</p>
+                    {item.desc && (
+                      <p className="font-body text-sm text-dark/60 leading-relaxed line-clamp-2">{item.desc}</p>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -188,18 +194,7 @@ const MenuSection = () => {
                   {selectedItem.name}
                 </h3>
 
-                {/* Dynamically extract the first sentence as a subtitle if it ends with a period, otherwise just show it normally if handled otherwise. To be safe, let's explicitly style it. */}
-                {selectedItem.desc.includes('.') ? (
-                  <>
-                    <p className="font-body text-wine/80 italic text-sm md:text-base mb-4">
-                      {selectedItem.desc.split('.')[0]}
-                    </p>
-                    <div className="w-12 h-[1px] bg-wine/50 mb-6" />
-                    <p className="font-body text-dark/70 leading-relaxed mb-8">
-                      {selectedItem.desc.substring(selectedItem.desc.indexOf('.') + 1).trim() || selectedItem.desc}
-                    </p>
-                  </>
-                ) : (
+                {selectedItem.desc && (
                   <>
                     <div className="w-12 h-[1px] bg-wine/50 mt-3 mb-6" />
                     <p className="font-body text-dark/70 leading-relaxed mb-8">

@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Cardápio · Restaurante dos Guarás</title>
+<meta name="viewport" content="width=900" />
+<link rel="icon" type="image/png" href="/Imagem9-logo2-gimp.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 portrait; margin: 0; }
+
+  :root {
+    --paper:        #f7efde;
+    --ink:          #1d2e3b;
+    --ink-soft:     #45596b;
+    --ocean-deep:   #0e3a56;
+    --ocean:        #1f5f80;
+    --seafoam:      #6fae9f;
+    --sand-deep:    #b3925f;
+    --coral:        #c2553d;
+    --rule:         #c9b88a;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0;
+    background: #2a3743;
+    font-family: 'Lora', Georgia, serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Sheet = one A4 page */
+  .sheet {
+    width: 210mm;
+    height: 297mm;
+    margin: 12mm auto;
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0,0,0,.35);
+    background-image:
+      radial-gradient(1200px 700px at 20% -10%, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(900px 600px at 110% 110%, rgba(217,195,154,.35), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(146,118,72,.025) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(90deg, rgba(146,118,72,.02) 0 1px, transparent 1px 4px);
+  }
+
+  .sheet-inner {
+    position: absolute;
+    inset: 13mm 13mm 14mm 13mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===== Decorative double frame + corner dots ===== */
+  .frame {
+    position: absolute;
+    inset: 7mm;
+    border: 1px solid var(--ocean-deep);
+    pointer-events: none;
+  }
+  .frame::before {
+    content: '';
+    position: absolute;
+    inset: 1.4mm;
+    border: 0.4pt solid var(--ocean-deep);
+    opacity: .55;
+  }
+  .frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 0 0,       var(--ocean-deep) 1.1mm, transparent 1.2mm) top    left   / 4mm 4mm no-repeat,
+      radial-gradient(circle at 100% 0,    var(--ocean-deep) 1.1mm, transparent 1.2mm) top    right  / 4mm 4mm no-repeat,
+      radial-gradient(circle at 0 100%,    var(--ocean-deep) 1.1mm, transparent 1.2mm) bottom left   / 4mm 4mm no-repeat,
+      radial-gradient(circle at 100% 100%, var(--ocean-deep) 1.1mm, transparent 1.2mm) bottom right / 4mm 4mm no-repeat;
+  }
+
+  /* ===== CAPA ===== */
+  .cover-inner {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cover-eyebrow {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 9.5pt;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--ocean);
+    margin-bottom: 9mm;
+  }
+  .cover-eyebrow .dot {
+    display: inline-block;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--coral);
+    vertical-align: middle;
+    margin: 0 9px 2px;
+  }
+  .cover-pre {
+    font-family: 'Italiana', serif;
+    font-size: 24pt;
+    color: var(--ocean-deep);
+    letter-spacing: .06em;
+    line-height: 1;
+    margin-bottom: 4mm;
+    display: block;
+  }
+  .cover-logo {
+    display: block;
+    height: 80mm;
+    width: auto;
+    margin: 0 auto;
+  }
+  .cover-wave {
+    margin: 7mm auto 0;
+    width: 88%;
+    display: block;
+    color: var(--ocean);
+  }
+  .cover-tagline {
+    margin-top: 7mm;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 11.5pt;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .cover-tagline span { color: var(--ocean); margin: 0 .4em; }
+  .cover-rule {
+    margin: 8mm auto 0;
+    width: 36mm;
+    height: 0.5pt;
+    background: var(--rule);
+  }
+  .cover-quote {
+    margin-top: 7mm;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 11pt;
+    color: var(--ocean-deep);
+    opacity: .85;
+  }
+  .cover-location {
+    margin-top: 5mm;
+    font-family: 'Lora', serif;
+    font-size: 8.5pt;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .cover-location .pin { color: var(--coral); }
+
+  /* ===== Page chapter title ===== */
+  .chapter {
+    text-align: center;
+    padding: 1mm 0 3mm;
+    color: var(--ocean-deep);
+  }
+  .chapter .eyebrow {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 9pt;
+    letter-spacing: .2em;
+    color: var(--ocean);
+    text-transform: uppercase;
+    margin-bottom: 1.5mm;
+  }
+  .chapter h1 {
+    font-family: 'Italiana', serif;
+    font-weight: 400;
+    font-size: 38pt;
+    line-height: 1;
+    margin: 0;
+    letter-spacing: .04em;
+  }
+  .chapter .legend {
+    margin-top: 2mm;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 10pt;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* Wave divider */
+  .wave-divider {
+    margin: 3mm auto 1mm;
+    width: 88%;
+    display: block;
+    color: var(--ocean);
+  }
+
+  /* ===== Section headings ===== */
+  .section { margin-top: 3.5mm; break-inside: avoid; }
+  .section + .section { margin-top: 4mm; }
+  .section--first { margin-top: 0; }
+  .section-sub--spaced { margin-top: 3mm; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 3mm;
+    margin-bottom: 1.6mm;
+    color: var(--ocean-deep);
+  }
+  .section-head .line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rule) 30%, var(--rule));
+  }
+  .section-head .line.r {
+    background: linear-gradient(90deg, var(--rule), var(--rule) 70%, transparent);
+  }
+  .section-head h2 {
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 15pt;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .section-sub {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 9.5pt;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ocean);
+    margin: 1mm 0 1.2mm;
+  }
+  .section-sub::before, .section-sub::after {
+    content: '·';
+    margin: 0 7px;
+    color: var(--sand-deep);
+  }
+
+  /* ===== Item lists ===== */
+  ul.items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.items li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    column-gap: 6px;
+    padding: 0.9mm 0;
+    font-family: 'Lora', serif;
+    font-size: 11.5pt;
+    line-height: 1.2;
+    color: var(--ink);
+    break-inside: avoid;
+  }
+  ul.items li + li {
+    border-top: 0.3pt dotted rgba(14,58,86,.32);
+  }
+  ul.items .name { font-weight: 400; word-break: break-word; display: flex; flex-direction: column; align-items: flex-start; }
+  ul.items .name em {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 8pt;
+    margin-left: 0;
+    margin-top: 1px;
+  }
+  ul.items .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 11pt;
+    color: var(--ocean-deep);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  ul.items .price.consult {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--coral);
+    font-size: 8.4pt;
+  }
+
+  /* 2-column grid · Petiscos & Principais */
+  .page1-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8mm;
+    align-items: start;
+    flex: 1;
+    min-height: 0;
+    position: relative;
+  }
+  .page1-grid::before {
+    content: '';
+    position: absolute;
+    top: 2mm; bottom: 0;
+    left: 50%;
+    width: 0.4pt;
+    background: linear-gradient(180deg, transparent, var(--rule) 8%, var(--rule) 92%, transparent);
+  }
+  .page1-grid > div { min-width: 0; }
+
+  /* 2-column grid · Da Casa */
+  .dacasa-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 8mm;
+    row-gap: 6mm;
+    flex: 1;
+    align-items: start;
+    position: relative;
+  }
+  .dacasa-grid::before {
+    content: '';
+    position: absolute;
+    top: 1mm; bottom: 1mm;
+    left: 50%;
+    width: 0.4pt;
+    background: linear-gradient(180deg, transparent, var(--rule) 10%, var(--rule) 90%, transparent);
+  }
+  .dacasa-grid > .section { margin-top: 0; }
+
+  /* Page-specific densities — só o que difere da base */
+  .sheet[data-page="dacasa"] ul.items li     { padding: 1.2mm 0; line-height: 1.24; }
+  .sheet[data-page="dacasa"] ul.items .price { font-size: 11pt; }
+  .sheet[data-page="dacasa"] .section-sub    { font-size: 10.6pt; }
+
+  /* Bebidas — espaçamento aumentado para evitar sobreposição */
+  .sheet[data-page="bebidas"] ul.items li       { padding: 0.75mm 0; line-height: 1.32; }
+  .sheet[data-page="bebidas"] ul.items .price   { font-size: 11pt; }
+  .sheet[data-page="bebidas"] ul.items .name em { line-height: 1.35; }
+  .sheet[data-page="bebidas"] .section-sub      { font-size: 9.8pt; }
+
+  /* Generic 2-column grid */
+  .row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8mm;
+    position: relative;
+    flex: 1;
+    align-items: start;
+  }
+  .row-2::before {
+    content: '';
+    position: absolute;
+    top: 1mm; bottom: 1mm;
+    left: 50%;
+    width: 0.4pt;
+    background: linear-gradient(180deg, transparent, var(--rule) 10%, var(--rule) 90%, transparent);
+  }
+
+  .stack { display: flex; flex-direction: column; }
+
+  /* ===== Footer (every page) ===== */
+  .footer {
+    margin-top: auto;
+    padding-top: 4mm;
+    text-align: center;
+    color: var(--ocean-deep);
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .footer .scallop {
+    display: block;
+    margin: 1.5mm auto 1.5mm;
+    color: var(--seafoam);
+  }
+  .footer .line {
+    font-size: 10pt;
+    letter-spacing: .14em;
+    color: var(--ink-soft);
+  }
+  .footer .line .quote  { font-style: italic; color: var(--ocean-deep); }
+  .footer .line .pin    { color: var(--coral); }
+  .footer .line .sep    { color: var(--sand-deep); margin: 0 .55em; }
+
+  /* Page mark badge */
+  .page-mark {
+    position: absolute;
+    bottom: 5mm;
+    left: 0; right: 0;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8pt;
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    color: var(--ocean);
+    pointer-events: none;
+  }
+  .page-mark .num {
+    display: inline-block;
+    border: 0.4pt solid var(--ocean);
+    border-radius: 999px;
+    padding: 1mm 2.6mm;
+    background: var(--paper);
+  }
+
+  /* Side label vertical */
+  .side-mark {
+    position: absolute;
+    top: 0; bottom: 0;
+    right: 3.5mm;
+    width: 4mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8pt;
+    letter-spacing: .55em;
+    text-transform: uppercase;
+    color: var(--seafoam);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  [data-tw-hidden="true"] { display: none !important; }
+
+  @media print {
+    html, body { background: white; }
+    .sheet { margin: 0; box-shadow: none; page-break-after: always; }
+    .sheet:last-child { page-break-after: auto; }
+    .twk-panel { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ CAPA ============ -->
+<section class="sheet" data-page="cover" data-screen-label="Capa">
+  <div class="frame"></div>
+  <div class="side-mark">Restaurante dos Guarás · São Luís — MA</div>
+
+  <div class="sheet-inner cover-inner">
+
+    <div class="cover-eyebrow">
+      Cozinha Maranhense<span class="dot"></span>Frutos do Mar
+    </div>
+
+    <span class="cover-pre">Restaurante dos</span>
+    <img src="/logo-guaras.png" alt="Guarás" class="cover-logo" />
+
+    <svg class="cover-wave" viewBox="0 0 600 22" preserveAspectRatio="none" height="14">
+      <path d="M0 11 Q 25 0, 50 11 T 100 11 T 150 11 T 200 11 T 250 11 T 300 11 T 350 11 T 400 11 T 450 11 T 500 11 T 550 11 T 600 11"
+            fill="none" stroke="currentColor" stroke-width="1.1"/>
+      <path d="M0 17 Q 25 6, 50 17 T 100 17 T 150 17 T 200 17 T 250 17 T 300 17 T 350 17 T 400 17 T 450 17 T 500 17 T 550 17 T 600 17"
+            fill="none" stroke="currentColor" stroke-width=".7" opacity=".55"/>
+    </svg>
+
+    <div class="cover-tagline">
+      Sabor Regional <span>◆</span> Frutos do Mar <span>◆</span> Comida Maranhense
+    </div>
+
+    <div class="cover-rule"></div>
+
+    <div class="cover-quote">"O verdadeiro sabor da culinária maranhense"</div>
+
+    <div class="cover-location">
+      <span class="pin">📍</span>&nbsp;São Luís — Maranhão
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============ PAGE 1 · ENTRADAS & PRINCIPAIS ============ -->
+<section class="sheet" data-screen-label="01 Entradas & Principais">
+  <div class="frame"></div>
+  <div class="side-mark">Restaurante dos Guarás · São Luís — MA</div>
+
+  <div class="sheet-inner">
+
+    <header class="chapter">
+      <div class="eyebrow">Capítulo Primeiro</div>
+      <h1>Entradas &amp; Principais</h1>
+      <div class="legend">Petiscos · Frutos do Mar · Carnes · Aves</div>
+      <svg class="wave-divider" viewBox="0 0 600 22" preserveAspectRatio="none" height="12">
+        <path d="M0 11 Q 25 0, 50 11 T 100 11 T 150 11 T 200 11 T 250 11 T 300 11 T 350 11 T 400 11 T 450 11 T 500 11 T 550 11 T 600 11"
+              fill="none" stroke="currentColor" stroke-width="1.1"/>
+      </svg>
+    </header>
+
+    <!-- 2 columns -->
+    <div class="page1-grid">
+
+      <!-- LEFT — PETISCOS -->
+      <div>
+        <div class="section section--first" data-tweak="petiscos">
+          <div class="section-head">
+            <div class="line"></div><h2>Petiscos</h2><div class="line r"></div>
+          </div>
+          <ul class="items">
+            <li><span class="name">Arroz de Marisco</span><span class="price">R$ 70,00</span></li>
+            <li><span class="name">Batata Frita <em>400g · molho rosê</em></span><span class="price">R$ 35,00</span></li>
+            <li><span class="name">Calabresa Acebolada <em>400g · farofa e vinagrete</em></span><span class="price">R$ 60,00</span></li>
+            <li><span class="name">Calabresa com Fritas <em>farofa e vinagrete</em></span><span class="price">R$ 85,00</span></li>
+            <li><span class="name">Camarão Empanado <em>300g · farofa e vinagrete</em></span><span class="price">R$ 140,00</span></li>
+            <li><span class="name">Camarão Frito Alho e Óleo <em>farofa e vinagrete</em></span><span class="price">R$ 120,00</span></li>
+            <li><span class="name">Caranguejo Toc Toc <em>5 und · farofa e vinagrete</em></span><span class="price">R$ 80,00</span></li>
+            <li><span class="name">Carne de Sol Trinchada <em>400g + batata frita · farofa e vinagrete</em></span><span class="price">R$ 120,00</span></li>
+            <li><span class="name">Casquinha de Caranguejo <em>farofa e vinagrete</em></span><span class="price">R$ 40,00</span></li>
+            <li><span class="name">Isca de Peixe <em>400g · farofa e vinagrete</em></span><span class="price">R$ 120,00</span></li>
+            <li><span class="name">Macaxeira Frita <em>400g · molho rosê</em></span><span class="price">R$ 35,00</span></li>
+            <li><span class="name">Pastel de Carne <em>10 und · geleia de pimenta</em></span><span class="price">R$ 43,50</span></li>
+            <li><span class="name">Pastel Misto <em>10 und · geleia de pimenta</em></span><span class="price">R$ 46,50</span></li>
+            <li><span class="name">Pastel de Queijo <em>10 und · geleia de pimenta</em></span><span class="price">R$ 43,50</span></li>
+            <li><span class="name">Peixe Pescadinha Frito <em>400g · farofa e vinagrete</em></span><span class="price">R$ 58,00</span></li>
+            <li><span class="name">Peixe Serra Frito <em>400g · farofa e vinagrete</em></span><span class="price">R$ 58,00</span></li>
+            <li><span class="name">Queijo Coalho na Chapa <em>geleia de pimenta</em></span><span class="price">R$ 35,00</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- RIGHT — PRATOS PRINCIPAIS -->
+      <div>
+        <div class="section section--first" data-tweak="pratos_principais">
+          <div class="section-head">
+            <div class="line"></div><h2>Pratos Principais</h2><div class="line r"></div>
+          </div>
+
+          <div data-tweak="frutos_do_mar">
+            <div class="section-sub">Frutos do Mar</div>
+            <ul class="items">
+              <li><span class="name">Camarão Frito com Casca Alho e Óleo <em>500g · ovo cozido e batata · serve 3 pessoas</em></span><span class="price">R$ 160,00</span></li>
+              <li><span class="name">Camaroada <em>500g com casca · ovo cozido, batata e vatapá · serve 3 pessoas</em></span><span class="price">R$ 165,00</span></li>
+              <li><span class="name">Camaroada sem Casca <em>500g · ovo cozido, batata e vatapá · serve 2 pessoas</em></span><span class="price">R$ 183,00</span></li>
+              <li><span class="name">Caranguejada <em>6 und · leite de coco e arroz de toucinho · serve 2 pessoas</em></span><span class="price">R$ 125,00</span></li>
+              <li><span class="name">Filé de Pescada Amarela <em>400g · serve 2 pessoas</em></span><span class="price">R$ 150,00</span></li>
+              <li><span class="name">Filé de Pescada Amarela ao Molho de Camarão <em>400g · vatapá · serve 2 pessoas</em></span><span class="price">R$ 180,00</span></li>
+              <li><span class="name">Pescada no Escabeche ao Molho de Camarão <em>serve 2 pessoas</em></span><span class="price">R$ 160,00</span></li>
+              <li><span class="name">Peixada Maranhense <em>800g · ovo cozido e batata · serve 3 pessoas</em></span><span class="price">R$ 160,00</span></li>
+              <li><span class="name">Peixada Mista <em>800g · camarões 10 und, ovo cozido e batata · serve 3 pessoas</em></span><span class="price">R$ 180,00</span></li>
+              <li><span class="name">Peixe Pedra Escabeche <em>800g · serve 2 pessoas</em></span><span class="price">R$ 150,00</span></li>
+              <li><span class="name">Peixe Pedra Frito <em>800g · vatapá · serve 2 pessoas</em></span><span class="price">R$ 160,00</span></li>
+              <li><span class="name">Pescada Amarela Frita <em>800g · serve 2 pessoas</em></span><span class="price">R$ 145,00</span></li>
+              <li><span class="name">Pescadinha Frita <em>800g · serve 2 pessoas</em></span><span class="price">R$ 110,00</span></li>
+              <li><span class="name">Pescadinha no Escabeche <em>800g · serve 2 pessoas</em></span><span class="price">R$ 130,00</span></li>
+            </ul>
+          </div>
+
+          <div data-tweak="carnes">
+            <div class="section-sub section-sub--spaced">Carnes</div>
+            <ul class="items">
+              <li><span class="name">Carne de Sol Frita <em>750g · baião de dois, purê, batata frita, farofa e vinagrete · serve 2 pessoas</em></span><span class="price">R$ 150,00</span></li>
+            </ul>
+          </div>
+
+          <div data-tweak="aves">
+            <div class="section-sub section-sub--spaced">Aves</div>
+            <ul class="items">
+              <li><span class="name">Galinha Caipira <em>arroz, farofa, pirão, macarrão e salada · serve 2 pessoas</em></span><span class="price">R$ 189,90</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <svg class="scallop" viewBox="0 0 240 16" width="160" height="10" fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M2 13 Q 12 2, 22 13 T 42 13 T 62 13 T 82 13 T 102 13 T 122 13 T 142 13 T 162 13 T 182 13 T 202 13 T 222 13 T 238 13"/>
+      </svg>
+      <div class="line">
+        <span class="quote">"O verdadeiro sabor da culinária maranhense"</span>
+        <span class="sep">·</span>
+        <span class="pin">📍</span>&nbsp;São Luís — Maranhão
+      </div>
+    </footer>
+  </div>
+
+  <div class="page-mark"><span class="num">i · entradas &amp; principais</span></div>
+</section>
+
+
+<!-- ============ PAGE 2 · DA CASA ============ -->
+<section class="sheet" data-page="dacasa" data-screen-label="02 Da Casa">
+  <div class="frame"></div>
+  <div class="side-mark">Pratos do dia · Acompanhamentos · Doces</div>
+
+  <div class="sheet-inner">
+
+    <header class="chapter">
+      <div class="eyebrow">Capítulo Segundo</div>
+      <h1>Da Casa</h1>
+      <div class="legend">Prato Feito · Porções Extras · Caldos · Sobremesas · Torta</div>
+      <svg class="wave-divider" viewBox="0 0 600 22" preserveAspectRatio="none" height="12">
+        <path d="M0 11 Q 25 0, 50 11 T 100 11 T 150 11 T 200 11 T 250 11 T 300 11 T 350 11 T 400 11 T 450 11 T 500 11 T 550 11 T 600 11"
+              fill="none" stroke="currentColor" stroke-width="1.1"/>
+      </svg>
+    </header>
+
+    <div class="dacasa-grid">
+      <div class="section" data-tweak="prato_feito">
+        <div class="section-head">
+          <div class="line"></div><h2>Prato Feito</h2><div class="line r"></div>
+        </div>
+        <div class="section-sub">De quarta a sexta · almoço executivo</div>
+        <ul class="items">
+          <li><span class="name">Frango ao Molho <em>arroz, feijão, farofa e salada</em></span><span class="price">R$ 35,00</span></li>
+          <li><span class="name">Tainha Frita <em>arroz, farofa, pirão, vinagrete, feijão</em></span><span class="price">R$ 35,00</span></li>
+          <li><span class="name">Assado de Panela <em>arroz, feijão, salada e farofa</em></span><span class="price">R$ 35,00</span></li>
+          <li><span class="name">Bife Acebolado <em>arroz, farofa, macarrão, feijão e salada</em></span><span class="price">R$ 35,00</span></li>
+          <li><span class="name">Bisteca <em>arroz, feijão, salada e farofa</em></span><span class="price">R$ 35,00</span></li>
+          <li><span class="name">Fígado Acebolado <em>arroz, feijão, salada e farofa</em></span><span class="price">R$ 35,00</span></li>
+          <li><span class="name">Cozidão <em>arroz, feijão, salada e farofa</em></span><span class="price">R$ 35,00</span></li>
+        </ul>
+      </div>
+
+      <div class="section" data-tweak="porcoes_extras">
+        <div class="section-head">
+          <div class="line"></div><h2>Porções Extras</h2><div class="line r"></div>
+        </div>
+        <ul class="items">
+          <li><span class="name">Arroz Branco</span><span class="price">R$ 16,00</span></li>
+          <li><span class="name">Arroz de Toucinho</span><span class="price">R$ 15,00</span></li>
+          <li><span class="name">Arroz de Marisco</span><span class="price">R$ 47,90</span></li>
+          <li><span class="name">Arroz de Cuxá</span><span class="price">R$ 39,90</span></li>
+          <li><span class="name">Arroz Baião de Dois</span><span class="price">R$ 24,90</span></li>
+          <li><span class="name">Farofa</span><span class="price">R$ 8,00</span></li>
+          <li><span class="name">Vinagrete</span><span class="price">R$ 8,00</span></li>
+          <li><span class="name">Vatapá</span><span class="price">R$ 24,90</span></li>
+        </ul>
+      </div>
+
+      <div class="section" data-tweak="caldos">
+        <div class="section-head">
+          <div class="line"></div><h2>Caldos</h2><div class="line r"></div>
+        </div>
+        <ul class="items">
+          <li><span class="name">Caldo de Ovos</span><span class="price">R$ 20,00</span></li>
+          <li><span class="name">Caldo de Camarão</span><span class="price">R$ 25,00</span></li>
+          <li><span class="name">Caldo de Peixe</span><span class="price">R$ 25,00</span></li>
+        </ul>
+      </div>
+
+      <div class="section" data-tweak="sobremesas">
+        <div class="section-head">
+          <div class="line"></div><h2>Sobremesas</h2><div class="line r"></div>
+        </div>
+        <ul class="items">
+          <li><span class="name">Pudim</span><span class="price">R$ 13,00</span></li>
+          <li><span class="name">Mousse <em>maracujá, cupuaçu ou bacuri</em></span><span class="price">R$ 13,00</span></li>
+        </ul>
+      </div>
+
+      <div class="section" data-tweak="torta">
+        <div class="section-head">
+          <div class="line"></div><h2>Torta</h2><div class="line r"></div>
+        </div>
+        <ul class="items">
+          <li><span class="name">Torta de Camarão <em>arroz, feijão, macarrão e salada</em></span><span class="price">R$ 44,90</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <svg class="scallop" viewBox="0 0 240 16" width="160" height="10" fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M2 13 Q 12 2, 22 13 T 42 13 T 62 13 T 82 13 T 102 13 T 122 13 T 142 13 T 162 13 T 182 13 T 202 13 T 222 13 T 238 13"/>
+      </svg>
+      <div class="line">
+        <span class="quote">"O verdadeiro sabor da culinária maranhense"</span>
+        <span class="sep">·</span>
+        <span class="pin">📍</span>&nbsp;São Luís — Maranhão
+      </div>
+    </footer>
+  </div>
+
+  <div class="page-mark"><span class="num">ii · da casa</span></div>
+</section>
+
+
+<!-- ============ PAGE 3 · BEBIDAS ============ -->
+<section class="sheet" data-page="bebidas" data-screen-label="03 Bebidas">
+  <div class="frame"></div>
+  <div class="side-mark">Para acompanhar · Cervejas · Drinks</div>
+
+  <div class="sheet-inner">
+
+    <header class="chapter">
+      <div class="eyebrow">Capítulo Terceiro</div>
+      <h1>Bebidas</h1>
+      <div class="legend">Bebidas · Cervejas 600ml · Long Neck · Drinks</div>
+      <svg class="wave-divider" viewBox="0 0 600 22" preserveAspectRatio="none" height="12">
+        <path d="M0 11 Q 25 0, 50 11 T 100 11 T 150 11 T 200 11 T 250 11 T 300 11 T 350 11 T 400 11 T 450 11 T 500 11 T 550 11 T 600 11"
+              fill="none" stroke="currentColor" stroke-width="1.1"/>
+      </svg>
+    </header>
+
+    <div class="row-2">
+      <!-- LEFT — Bebidas + Long Neck -->
+      <div class="stack">
+        <div class="section section--first" data-tweak="bebidas">
+          <div class="section-head">
+            <div class="line"></div><h2>Bebidas</h2><div class="line r"></div>
+          </div>
+          <div class="section-sub">Sucos, refrigerantes &amp; águas</div>
+          <ul class="items">
+            <li><span class="name">Água Mineral <em>500ml</em></span><span class="price">R$ 5,00</span></li>
+            <li><span class="name">Água Mineral com Gás <em>500ml</em></span><span class="price">R$ 6,00</span></li>
+            <li><span class="name">Água de Coco, Água Tônica</span><span class="price">R$ 8,00</span></li>
+            <li><span class="name">H2O, Schweppes</span><span class="price">R$ 8,00</span></li>
+            <li><span class="name">Refrigerante Lata, Suco Dell Valle</span><span class="price">R$ 9,00</span></li>
+            <li><span class="name">Baly, Ice, Monster</span><span class="price">R$ 12,00</span></li>
+            <li><span class="name">Refrigerante 1L <em>Coca-Cola, Jesus, Fanta, Guaraná Antártica</em></span><span class="price">R$ 14,00</span></li>
+            <li><span class="name">Red Bull</span><span class="price">R$ 15,00</span></li>
+            <li><span class="name">Suco de Frutas <em>copo, sem leite</em><em>acerola, bacuri, cupuaçu, caju, cajá, graviola, goiaba, maracujá, abacaxi c/ hortelã</em></span><span class="price">R$ 13,00</span></li>
+            <li><span class="name">Suco de Frutas <em>copo, com leite</em></span><span class="price">R$ 15,00</span></li>
+            <li><span class="name">Jarra 1L <em>sem leite</em></span><span class="price">R$ 25,00</span></li>
+            <li><span class="name">Jarra 1L <em>com leite</em></span><span class="price">R$ 30,00</span></li>
+          </ul>
+        </div>
+
+        <div class="section" data-tweak="long_neck">
+          <div class="section-head">
+            <div class="line"></div><h2>Long Neck</h2><div class="line r"></div>
+          </div>
+          <ul class="items">
+            <li><span class="name">Budweiser</span><span class="price">R$ 10,00</span></li>
+            <li><span class="name">Stella Artois</span><span class="price">R$ 12,00</span></li>
+            <li><span class="name">Corona Zero Álcool, Eisenbahn Pilsen</span><span class="price">R$ 13,00</span></li>
+            <li><span class="name">Heineken, Stella Pure Gold</span><span class="price">R$ 13,00</span></li>
+            <li><span class="name">Corona, Heineken Zero</span><span class="price">R$ 14,00</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- RIGHT — Cervejas + Drinks -->
+      <div class="stack">
+        <div class="section section--first" data-tweak="cervejas">
+          <div class="section-head">
+            <div class="line"></div><h2>Cervejas 600ml</h2><div class="line r"></div>
+          </div>
+          <div class="section-sub">Geladíssimas, abrindo na hora</div>
+          <ul class="items">
+            <li><span class="name">Devassa, Itaipava</span><span class="price">R$ 10,00</span></li>
+            <li><span class="name">Amstel, Antárctica, Brahma</span><span class="price">R$ 14,00</span></li>
+            <li><span class="name">Eisenbahn Pilsen, Império</span><span class="price">R$ 14,00</span></li>
+            <li><span class="name">Skol, Skol Puro Malte</span><span class="price">R$ 14,00</span></li>
+            <li><span class="name">Antárctica Original, Brahma Puro Malte, Budweiser</span><span class="price">R$ 15,00</span></li>
+            <li><span class="name">Spaten, Stella Artois</span><span class="price">R$ 16,00</span></li>
+            <li><span class="name">Heineken</span><span class="price">R$ 20,00</span></li>
+          </ul>
+        </div>
+
+        <div class="section" data-tweak="drinks">
+          <div class="section-head">
+            <div class="line"></div><h2>Drinks</h2><div class="line r"></div>
+          </div>
+          <ul class="items">
+            <li><span class="name">Cachaça Ypióca</span><span class="price">R$ 7,00</span></li>
+            <li><span class="name">Martini, Rum Montilla, Vodka Slova</span><span class="price">R$ 10,00</span></li>
+            <li><span class="name">Caipirinha Tradicional, Campari</span><span class="price">R$ 15,00</span></li>
+            <li><span class="name">Johnnie Walker Red</span><span class="price">R$ 20,00</span></li>
+            <li><span class="name">Caipifruta <em>vodka, açúcar, gelo · morango, maracujá, abacaxi, cupuaçu</em></span><span class="price">R$ 22,00</span></li>
+            <li><span class="name">Caipiveja Tradicional, Cuba Libre, Gin Tônica</span><span class="price">R$ 25,00</span></li>
+            <li><span class="name">Caipiveja de Morango, Caipveja, Sex on the Beach</span><span class="price">R$ 30,00</span></li>
+            <li><span class="name">Quinta do Morgado <em>ou similar</em></span><span class="price">R$ 40,00</span></li>
+            <li><span class="name">Vinho Garrafa Chileno <em>ou similar</em></span><span class="price">R$ 50,00</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <svg class="scallop" viewBox="0 0 240 16" width="160" height="10" fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M2 13 Q 12 2, 22 13 T 42 13 T 62 13 T 82 13 T 102 13 T 122 13 T 142 13 T 162 13 T 182 13 T 202 13 T 222 13 T 238 13"/>
+      </svg>
+      <div class="line">
+        <span class="quote">"O verdadeiro sabor da culinária maranhense"</span>
+        <span class="sep">·</span>
+        <span class="pin">📍</span>&nbsp;São Luís — Maranhão
+      </div>
+    </footer>
+  </div>
+
+  <div class="page-mark"><span class="num">iii · bebidas</span></div>
+</section>
+
+
+<!-- ============ TWEAKS ============ -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<div id="tweaks-root"></div>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "petiscos": true,
+  "pratos_principais": true,
+  "frutos_do_mar": true,
+  "carnes": true,
+  "aves": true,
+  "prato_feito": true,
+  "caldos": true,
+  "porcoes_extras": true,
+  "sobremesas": true,
+  "torta": true,
+  "bebidas": true,
+  "cervejas": true,
+  "long_neck": true,
+  "drinks": true
+}/*EDITMODE-END*/;
+
+const SECTION_LABELS = {
+  petiscos:          "Petiscos",
+  pratos_principais: "Pratos Principais",
+  frutos_do_mar:     "↳ Frutos do Mar",
+  carnes:            "↳ Carnes",
+  aves:              "↳ Aves",
+  prato_feito:       "Prato Feito",
+  caldos:            "Caldos",
+  porcoes_extras:    "Porções Extras",
+  sobremesas:        "Sobremesas",
+  torta:             "Torta",
+  bebidas:           "Bebidas",
+  cervejas:          "Cervejas 600ml",
+  long_neck:         "Long Neck",
+  drinks:            "Drinks",
+};
+
+function applyVisibility(state) {
+  Object.keys(SECTION_LABELS).forEach((key) => {
+    const visible = state[key] !== false;
+    document.querySelectorAll(`[data-tweak="${key}"]`).forEach((el) => {
+      el.setAttribute('data-tw-hidden', visible ? 'false' : 'true');
+    });
+  });
+}
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  React.useEffect(() => { applyVisibility(t); }, [t]);
+
+  const visibleCount = Object.keys(SECTION_LABELS).filter((k) => t[k] !== false).length;
+  const totalCount   = Object.keys(SECTION_LABELS).length;
+
+  const toggleAll = (val) => {
+    const patch = {};
+    Object.keys(SECTION_LABELS).forEach((k) => { patch[k] = val; });
+    setTweak(patch);
+  };
+
+  const btnStyle = {
+    flex: 1, appearance: "none",
+    border: "0.5px solid rgba(0,0,0,.15)",
+    background: "rgba(255,255,255,.6)",
+    color: "#29261b",
+    borderRadius: 7, padding: "5px 6px",
+    fontSize: 10.5, fontWeight: 500,
+    letterSpacing: ".02em", cursor: "pointer",
+  };
+
+  return (
+    <TweaksPanel title="Tweaks · Excluir seções">
+      <div style={{
+        font: "italic 11px/1.4 'Cormorant Garamond', serif",
+        color: "rgba(41,38,27,.7)",
+        padding: "2px 2px 6px",
+        borderBottom: "0.5px solid rgba(0,0,0,.08)"
+      }}>
+        Desligue uma seção para escondê-la do cardápio impresso.<br/>
+        <strong style={{ color: "#0e3a56" }}>{visibleCount}/{totalCount}</strong> seções visíveis.
+      </div>
+      <div style={{ display: "flex", gap: 6, padding: "6px 0 2px" }}>
+        <button onClick={() => toggleAll(true)}  style={btnStyle}>Mostrar todas</button>
+        <button onClick={() => toggleAll(false)} style={btnStyle}>Ocultar todas</button>
+      </div>
+
+      <TweakSection label="Página 1 · Entradas & Principais" />
+      <TweakToggle label={SECTION_LABELS.petiscos}          value={t.petiscos !== false}          onChange={(v)=>setTweak('petiscos', v)} />
+      <TweakToggle label={SECTION_LABELS.pratos_principais} value={t.pratos_principais !== false} onChange={(v)=>setTweak('pratos_principais', v)} />
+      <TweakToggle label={SECTION_LABELS.frutos_do_mar}     value={t.frutos_do_mar !== false}     onChange={(v)=>setTweak('frutos_do_mar', v)} />
+      <TweakToggle label={SECTION_LABELS.carnes}            value={t.carnes !== false}            onChange={(v)=>setTweak('carnes', v)} />
+      <TweakToggle label={SECTION_LABELS.aves}              value={t.aves !== false}              onChange={(v)=>setTweak('aves', v)} />
+
+      <TweakSection label="Página 2 · Da Casa" />
+      <TweakToggle label={SECTION_LABELS.prato_feito}    value={t.prato_feito !== false}    onChange={(v)=>setTweak('prato_feito', v)} />
+      <TweakToggle label={SECTION_LABELS.porcoes_extras} value={t.porcoes_extras !== false} onChange={(v)=>setTweak('porcoes_extras', v)} />
+      <TweakToggle label={SECTION_LABELS.caldos}         value={t.caldos !== false}         onChange={(v)=>setTweak('caldos', v)} />
+      <TweakToggle label={SECTION_LABELS.sobremesas}     value={t.sobremesas !== false}     onChange={(v)=>setTweak('sobremesas', v)} />
+      <TweakToggle label={SECTION_LABELS.torta}          value={t.torta !== false}          onChange={(v)=>setTweak('torta', v)} />
+
+      <TweakSection label="Página 3 · Bebidas" />
+      <TweakToggle label={SECTION_LABELS.bebidas}   value={t.bebidas !== false}   onChange={(v)=>setTweak('bebidas', v)} />
+      <TweakToggle label={SECTION_LABELS.cervejas}  value={t.cervejas !== false}  onChange={(v)=>setTweak('cervejas', v)} />
+      <TweakToggle label={SECTION_LABELS.long_neck} value={t.long_neck !== false} onChange={(v)=>setTweak('long_neck', v)} />
+      <TweakToggle label={SECTION_LABELS.drinks}    value={t.drinks !== false}    onChange={(v)=>setTweak('drinks', v)} />
+    </TweaksPanel>
+  );
+}
+
+applyVisibility(TWEAK_DEFAULTS);
+ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
+</script>
+
+</body>
+</html>
