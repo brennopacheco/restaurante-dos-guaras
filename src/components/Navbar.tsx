@@ -59,7 +59,7 @@ const Navbar = () => {
             <a
               key={item.href}
               href={item.href}
-              className="font-body text-sm font-medium tracking-[0.15em] uppercase text-cream/80 hover:text-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
+              className="font-body text-sm font-medium tracking-[0.15em] uppercase text-cream/80 hover:text-cream transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-gold after:shadow-[0_0_8px_hsl(34_73%_56%/0.6)] after:transition-[width] after:duration-300 after:ease-out hover:after:w-full"
             >
               {item.label}
             </a>
@@ -90,7 +90,7 @@ const Navbar = () => {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="font-display text-xl text-cream/80 hover:text-gold transition-colors"
+                  className="font-display text-xl text-cream/80 relative pl-4 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-0 before:h-[1px] before:bg-gold before:transition-[width] before:duration-300 before:ease-out hover:before:w-2 active:before:w-2"
                 >
                   {item.label}
                 </a>

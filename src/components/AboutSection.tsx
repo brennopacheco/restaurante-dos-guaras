@@ -42,25 +42,25 @@ const AboutSection = () => {
             </h2>
             <div className="w-16 h-[1px] bg-wine mb-8" />
             <p className="font-body text-muted-foreground leading-relaxed text-lg mb-6">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores, harum. Unde delectus tempora ratione beatae amet, quis soluta, doloremque corporis similique recusandae, alias nemo maxime laboriosam! Maxime omnis sequi debitis.
+              Somos o primeiro restaurante localizado às margens da Baía do Arraial, no lado leste da Ilha do Maranhão — um ecossistema ainda pouco explorado de São Luís, entre manguezais preservados e as águas serenas da baía.
             </p>
             <p className="font-body text-muted-foreground leading-relaxed text-lg mb-8">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum odit consequuntur blanditiis numquam sapiente harum nostrum, distinctio ipsam voluptas in deserunt delectus quo alias consequatur repellat quia impedit cum illum.
+              Aqui, cada prato carrega a alma da cozinha maranhense: frutos do mar frescos, temperos regionais e uma vista que convida à contemplação. Venha descobrir um novo destino gastronômico em São Luís.
             </p>
             <div className="flex items-center justify-between sm:justify-start gap-2 sm:gap-6 w-full mt-4">
               <div className="text-center flex-1 sm:flex-none">
-                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-forest">16</p>
-                <p className="font-body text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">Pratos no Cardápio</p>
+                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-forest">Novo</p>
+                <p className="font-body text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">Destino</p>
               </div>
               <div className="w-[1px] h-8 sm:h-12 bg-border shrink-0" />
               <div className="text-center flex-1 sm:flex-none">
-                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-forest">Frutos</p>
-                <p className="font-body text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">do Mar</p>
+                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-forest">Comidas</p>
+                <p className="font-body text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">Típicas</p>
               </div>
               <div className="w-[1px] h-8 sm:h-12 bg-border shrink-0" />
               <div className="text-center flex-1 sm:flex-none">
-                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-forest">Mangue</p>
-                <p className="font-body text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">& Mar</p>
+                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-forest">Paz</p>
+                <p className="font-body text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">& Natureza</p>
               </div>
             </div>
           </motion.div>
