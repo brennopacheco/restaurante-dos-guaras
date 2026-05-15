@@ -41,10 +41,10 @@ const AboutSection = () => {
             </h2>
             <div className="w-16 h-[1px] bg-wine mb-8" />
             <p className="font-body text-muted-foreground leading-relaxed text-lg mb-6">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores, harum. Unde delectus tempora ratione beatae amet, quis soluta, doloremque corporis similique recusandae, alias nemo maxime laboriosam! Maxime omnis sequi debitis.
+              Somos o primeiro restaurante localizado às margens da Baía do Arraial, no lado leste da Ilha do Maranhão — um ecossistema ainda pouco explorado de São Luís, entre manguezais preservados e as águas serenas da baía.
             </p>
             <p className="font-body text-muted-foreground leading-relaxed text-lg mb-8">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum odit consequuntur blanditiis numquam sapiente harum nostrum, distinctio ipsam voluptas in deserunt delectus quo alias consequatur repellat quia impedit cum illum.
+              Aqui, cada prato carrega a alma da cozinha maranhense: frutos do mar frescos, temperos regionais e uma vista que convida à contemplação. Venha descobrir um novo destino gastronômico em São Luís.
             </p>
             <div className="flex items-center justify-between sm:justify-start gap-2 sm:gap-6 w-full mt-4">
               <div className="text-center flex-1 sm:flex-none">
